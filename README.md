@@ -28,11 +28,11 @@ luarocks install dpnn
 ##Training
 You can reproduce the best results for direct feedback-alignment for each dataset with:
 ```lua
-th Main.lua -dataset MNIST -network mlp.lua -LR 2e-4 -eps 0.08
+th Main.lua -dataset MNIST -network mlp.lua -LR 1e-4 -eps 0.08
 ```
 or,
 ```lua
-th Main.lua -dataset Cifar10 -network conv.lua -LR 2.5e-5 -whiten
+th Main.lua -dataset Cifar10 -network conv.lua -LR 5e-5 -whiten
 ```
 or,
 ```lua
