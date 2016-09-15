@@ -16,11 +16,13 @@ You can get the needed data using @soumith's repo: https://github.com/soumith/ci
 * Torch (http://torch.ch)
 * "DataProvider.torch" (https://github.com/eladhoffer/DataProvider.torch) for DataProvider class.
 * "cudnn.torch" (https://github.com/soumith/cudnn.torch) for faster training. Can be avoided by changing "cudnn" to "nn" in models.
+* "dpnn" (https://github.com/Element-Research/dpnn) for maxnorm constraints on weights
 
 To install all dependencies (assuming torch is installed) use:
 ```bash
 luarocks install https://raw.githubusercontent.com/eladhoffer/eladtools/master/eladtools-scm-1.rockspec
 luarocks install https://raw.githubusercontent.com/eladhoffer/DataProvider.torch/master/dataprovider-scm-1.rockspec
+luarocks install dpnn
 ```
 
 ##Training
@@ -40,8 +42,8 @@ th Main.lua -dataset Cifar100 -network conv.lua -LR 2.5e-5 -whiten
 ##Additional flags
 |Flag             | Default Value        |Description
 |:----------------|:--------------------:|:----------------------------------------------
-|modelsFolder     |  ./Models/           | Models Folder
-|network          |  mlp.lua             | Model file - must return valid network.
+|modelsFolder     |  ./Models/           | models Folder
+|network          |  mlp.lua             | model file - must return valid network.
 |criterion        |  bce                 | criterion, ce(cross-entropy) or bce(binary cross-entropy)
 |eps              |  0                   | adversarial regularization magnitude (fast-sign-method a.la Goodfellow)
 |dropout          |  0                   | 1=apply dropout regularization
@@ -52,27 +54,27 @@ th Main.lua -dataset Cifar100 -network conv.lua -LR 2.5e-5 -whiten
 |bias             |  1                   | 0=do not use bias
 |rfb_mag          |  0                   | random feedback magnitude, 0=auto scale
 |LR               |  0.0001              | learning rate
-|LRDecay          |  0                   | learning rate decay (in # samples
+|LRDecay          |  0                   | learning rate decay (in # samples)
 |weightDecay      |  0                   | L2 penalty on the weights
 |momentum         |  0                   | momentum
 |batchSize        |  64                  | batch size
-|optimization     |  rmsprop             | optimization method
+|optimization     |  rmsprop             | optimization method(sgd,rmsprop,adam etc)
 |epoch            |  300                 | number of epochs to train (-1 for unbounded)
 |epoch_step       |  -1                  | learning rate step, -1 for no step, 0 for auto, >0 for multiple of epochs to decrease
 |gradient         |  dfa                 | gradient for learning, bp(back-prop), fa(feedback-alignment) or dfa(direct feedback-alignment)
 |maxInNorm        |  400                 | max norm on incoming weights
 |maxOutNorm       |  400                 | max norm on outgoing weights
-|accGradient      |  0                   | 1=accumulate back-prop and adversarial gradient (if eps>0)
+|accGradient      |  0                   | 1=accumulate normal and adversarial gradient (if eps>0)
 |threads          |  8                   | number of threads
 |type             |  cuda                | float or cuda
 |devid            |  1                   | device ID (if using CUDA)
-|load             |  none                |  load existing net weights
+|load             |  none                | load existing net weights
 |save             |  time-identifier     | save directory
 |dataset          |  MNIST               | Dataset - Cifar10, Cifar100, STL10, SVHN, MNIST
-|normalization    |  scale               | scale - between 0 and 1, simple - whole sample, channel - by image channel, image - mean and std images
+|normalization    |  scale               | scale(between 0 and 1), simple(whole sample,mean=0,std=1), channel(by image channel), image(mean and std images)
 |format           |  rgb                 | rgb or yuv
 |whiten           |  false               | whiten data
-|augment          |  false               | Augment training data
-|preProcDir       |  ./PreProcData/      | Data for pre-processing (means,Pinv,P)
+|augment          |  false               | augment training data
+|preProcDir       |  ./PreProcData/      | data directory for pre-processing (means,Pinv,P)
 |validate         |  false               | use validation set for testing instead of test set
 |visualize        |  0                   | 1=visualizing results
