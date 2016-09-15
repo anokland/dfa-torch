@@ -5,11 +5,9 @@ This repo contains code to reproduce experiments in paper
 "Direct Feedback Alignment Provides Learning in Deep Neural Networks"
 (https://arxiv.org/abs/1609.01596)
 
-This code and readme is copied and modified based on https://github.com/eladhoffer/ConvNet-torch
+This code and readme is copied and modified based on https://github.com/eladhoffer/ConvNet-torch (Deep Networks on classification tasks using Torch)
 
-Deep Networks on classification tasks using Torch
-=================================================
-This is a complete training example for {Cifar10/100, STL10, SVHN, MNIST} tasks
+Supported datasets are {Cifar10/100, STL10, SVHN, MNIST}
 
 ##Data
 You can get the needed data using @soumith's repo: https://github.com/soumith/cifar.torch.git
