@@ -52,7 +52,7 @@ th Main.lua -dataset Cifar100 -network conv.lua -LR 2.5e-5 -whiten
 |num_layers       |  2                   | number of hidden layers (if applicable)
 |num_hidden       |  800                 | number of hidden neurons (if applicable)
 |bias             |  1                   | 0=do not use bias
-|rfb_mag          |  0                   | random feedback magnitude, 0=auto scale
+|rfb_mag          |  0                   | random feedback magnitude, 0=uniform distribution in [-1/sqrt(fanout),1/sqrt(fanout)], X=uniform distribution in [-X,X], X=1 works fine with SGD
 |LR               |  0.0001              | learning rate
 |LRDecay          |  0                   | learning rate decay (in # samples)
 |weightDecay      |  0                   | L2 penalty on the weights
