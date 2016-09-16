@@ -3,7 +3,7 @@ local opt = opt or {}
 local Dataset = opt.dataset or 'Cifar10'
 local PreProcDir = opt.preProcDir or './'
 local Whiten = opt.whiten or false
-local DataPath = opt.datapath or '/media/arild/a12a41d5-85ea-4d31-b8df-5126c4df47da/arild/datasets/'
+local DataPath = opt.datapath
 local normalization = opt.normalization or 'channel'
 local format = opt.format or 'rgb'
 local TestData

@@ -17,12 +17,14 @@ You can get the needed data using @soumith's repo: https://github.com/soumith/ci
 * "DataProvider.torch" (https://github.com/eladhoffer/DataProvider.torch) for DataProvider class.
 * "cudnn.torch" (https://github.com/soumith/cudnn.torch) for faster training. Can be avoided by changing "cudnn" to "nn" in models.
 * "dpnn" (https://github.com/Element-Research/dpnn) for maxnorm constraints on weights
+* "unsup" (https://github.com/koraykv/unsup) for whitening of data
 
 To install all dependencies (assuming torch is installed) use:
 ```bash
 luarocks install https://raw.githubusercontent.com/eladhoffer/eladtools/master/eladtools-scm-1.rockspec
 luarocks install https://raw.githubusercontent.com/eladhoffer/DataProvider.torch/master/dataprovider-scm-1.rockspec
 luarocks install dpnn
+luarocks install unsup
 ```
 
 ##Training
@@ -70,7 +72,8 @@ th Main.lua -dataset Cifar100 -network conv.lua -LR 2.5e-5 -whiten
 |devid            |  1                   | device ID (if using CUDA)
 |load             |  none                | load existing net weights
 |save             |  time-identifier     | save directory
-|dataset          |  MNIST               | Dataset - Cifar10, Cifar100, STL10, SVHN, MNIST
+|dataset          |  MNIST               | dataset - Cifar10, Cifar100, STL10, SVHN, MNIST
+|datapath         |  ./Datasets/         | data set directory
 |normalization    |  scale               | scale(between 0 and 1), simple(whole sample,mean=0,std=1), channel(by image channel), image(mean and std images)
 |format           |  rgb                 | rgb or yuv
 |whiten           |  false               | whiten data
