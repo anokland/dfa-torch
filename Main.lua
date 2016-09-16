@@ -62,7 +62,7 @@ cmd:option('-whiten',             false,                  'whiten data')
 cmd:option('-augment',            false,                  'Augment training data')
 cmd:option('-preProcDir',         './PreProcData/',       'Data for pre-processing (means,P,invP)')
 cmd:option('-validate',           false,                  'use validation set for testing instead of test set')
-cmd:option('-datapath',           './Datasets/',          'data set directory'
+cmd:option('-datapath',           './Datasets/',          'data set directory')
 
 cmd:text('===>Misc')
 cmd:option('-visualize',          0,                      'visualizing results')
