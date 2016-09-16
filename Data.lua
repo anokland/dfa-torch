@@ -136,8 +136,20 @@ else
     loaded = true
   end
 
-  mean, std = TrainDataProvider:normalize(normalization, mean, std)
-  TestDataProvider:normalize(normalization, mean, std)
+  if normalization == 'scale' then 
+    mean = mean or TrainDataProvider.Data:mean()
+    std = std or TrainDataProvider.Data:std()
+    local min = TrainDataProvider.Data:min()
+    TrainDataProvider.Data:add(-min)
+    local max = TrainDataProvider.Data:max()
+    TrainDataProvider.Data:div(max)
+    
+    TestDataProvider.Data:add(-min)
+    TestDataProvider.Data:div(max)
+  else
+    mean, std = TrainDataProvider:normalize(normalization, mean, std)
+    TestDataProvider:normalize(normalization, mean, std)
+  end
 
   if not loaded then
     torch.save(meanfile,mean)
