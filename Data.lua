@@ -39,8 +39,9 @@ elseif Dataset == 'STL10' then
     TestData.label = TestData.label:add(-1):byte()
     TrainData.label = TrainData.label:add(-1):byte()
 elseif Dataset == 'MNIST' then
-    TrainData = torch.load(DataPath .. 'MNIST/mnist-train.t7')
-    TestData = torch.load(DataPath .. 'MNIST/mnist-test.t7')
+    mnist = require 'mnist'
+    TrainData = mnist.traindataset()
+    TestData = mnist.testdataset()
     Classes = {1,2,3,4,5,6,7,8,9,0}
     TestData.data = TestData.data:view(TestData.data:size(1),1,28,28)
     TrainData.data = TrainData.data:view(TrainData.data:size(1),1,28,28)
