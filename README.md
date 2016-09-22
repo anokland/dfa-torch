@@ -18,6 +18,7 @@ You can get the needed data using @soumith's repo: https://github.com/soumith/ci
 * "cudnn.torch" (https://github.com/soumith/cudnn.torch) for faster training. Can be avoided by changing "cudnn" to "nn" in models.
 * "dpnn" (https://github.com/Element-Research/dpnn) for maxnorm constraints on weights
 * "unsup" (https://github.com/koraykv/unsup) for whitening of data
+* "mnist" (https://github.com/andresy/mnist) for MNIST data set
 
 To install all dependencies (assuming torch is installed) use:
 ```bash
@@ -25,6 +26,7 @@ luarocks install https://raw.githubusercontent.com/eladhoffer/eladtools/master/e
 luarocks install https://raw.githubusercontent.com/eladhoffer/DataProvider.torch/master/dataprovider-scm-1.rockspec
 luarocks install dpnn
 luarocks install unsup
+luarocks install https://raw.github.com/andresy/mnist/master/rocks/mnist-scm-1.rockspec
 ```
 
 ##Training
