@@ -36,7 +36,7 @@ function BCECriterion:updateOutput(input, target)
    
    self.input = self.sig:forward(input)
    
-   local indices = target:view(-1,1)
+   local indices = self.target:view(-1,1)
    self.buffer:scatter(2, indices, 1)
    
    self.bce:updateOutput(self.input, self.buffer)
@@ -59,7 +59,7 @@ function BCECriterion:updateGradInput(input, target)
    
    self.input = self.sig:forward(input)
 
-   local indices = target:view(-1,1)
+   local indices = self.target:view(-1,1)
    self.gradInput:scatter(2, indices, 1)
    self.gradInput:mul(-1)
    self.gradInput:add(self.input)
