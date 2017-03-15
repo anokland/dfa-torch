@@ -44,6 +44,7 @@ th Main.lua -dataset Cifar100 -network conv.lua -LR 2.5e-5 -whiten
 ```
 
 ##Additional flags
+
 |Flag             | Default Value        |Description
 |:----------------|:--------------------:|:----------------------------------------------
 |modelsFolder     |  ./Models/           | models Folder
