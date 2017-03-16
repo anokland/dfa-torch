@@ -9,10 +9,10 @@ This code and readme is copied and modified based on https://github.com/eladhoff
 
 Supported datasets are {Cifar10/100, STL10, SVHN, MNIST}
 
-##Data
+## Data
 You can get the needed data using @soumith's repo: https://github.com/soumith/cifar.torch.git
 
-##Dependencies
+## Dependencies
 * Torch (http://torch.ch)
 * "DataProvider.torch" (https://github.com/eladhoffer/DataProvider.torch) for DataProvider class.
 * "cudnn.torch" (https://github.com/soumith/cudnn.torch) for faster training. Can be avoided by changing "cudnn" to "nn" in models.
@@ -29,7 +29,7 @@ luarocks install unsup
 luarocks install https://raw.github.com/andresy/mnist/master/rocks/mnist-scm-1.rockspec
 ```
 
-##Training
+## Training
 You can reproduce the best results for direct feedback-alignment for each dataset with:
 ```lua
 th Main.lua -dataset MNIST -network mlp.lua -LR 1e-4 -eps 0.08
@@ -43,7 +43,7 @@ or,
 th Main.lua -dataset Cifar100 -network conv.lua -LR 2.5e-5 -whiten
 ```
 
-##Additional flags
+## Additional flags
 
 |Flag             | Default Value        |Description
 |:----------------|:--------------------:|:----------------------------------------------
