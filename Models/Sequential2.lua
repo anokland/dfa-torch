@@ -25,7 +25,7 @@ function Sequential2:backward(input, gradOutput, scale, backprop)
    for i=#self.modules-1,1,-1 do
       local previousModule = self.modules[i]
       if torch.typename(currentModule) == 'ErrorFeedback' then
-        if backprop==false then
+        if not backprop then
           currentGradOutput = currentModule:backward(previousModule.output, gradOutput, scale)
           currentModule.gradInput = currentGradOutput
         end
